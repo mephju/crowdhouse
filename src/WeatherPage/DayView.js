@@ -6,12 +6,12 @@ import Temperature from './Temperature'
 import * as Title from '../views/Title'
 import toWeekday from '../utils/toWeekday'
 
-const Box = styled.div`
+const DayViewWrapper = styled.div`
   cursor: pointer;
-  padding-top: 10px;
+  margin: 20px 10px;
   flex-grow: 1;
   text-align: center;
-  border-right: 2px solid rgba(255, 255, 255, 0.2);
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
   &:last-child {
     border-right: 0px;
   }
@@ -33,13 +33,11 @@ class DayView extends Component {
     const {day} = this.props
     const weekday = toWeekday(day.datetime)
 
-    console.log('day', day)
-
-    return <Box onClick={this.onSelectDay}>
+    return <DayViewWrapper onClick={this.onSelectDay}>
       <Title.Small> {weekday} </Title.Small>
       <WeatherIcon name={day.weather.icon} />
       <Temperature temperature={day.max_temp} />
-    </Box>
+    </DayViewWrapper>
   }
 
 

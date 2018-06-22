@@ -9,23 +9,20 @@ import Row from '../views/Row'
 const TransBox = styled.div`
   background:  rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  /* padding: 20px 0; */
   flex-grow: 1;
-
   display: flex;
-
-  margin:0px 20px 20px  0;
+  margin:0px 30px 30px  0;
   &:last-child {
     margin-right: 0;
   }
 `
 
 const City = styled.div`
-  font-size: 2rem;
+  font-size: 3rem;
 `
-
 const Area = styled.div`
   color: #ffffffaa;
+  margin-bottom: 30px;
 `
 
 class WeatherPageView extends Component {
@@ -48,8 +45,6 @@ class WeatherPageView extends Component {
     const days = data.data
     const day = days[this.state.currentDayIndex]
 
-    console.log('got data', data)
-
     return <Fragment>
       <City> {data.city_name} </City>
       <Area> {data.country_code} </Area>
@@ -65,18 +60,17 @@ class WeatherPageView extends Component {
 
       </Row>
 
-      <div>
-        <TransBox>
-          {days.map((day, i) =>
-            <DayView
-              key={i}
-              dayIndex={i}
-              day={day}
-              onSelectDay={this.onSelectDay}
-            />
-          )}
-        </TransBox>
-      </div>
+      <TransBox>
+        {days.map((day, i) =>
+          <DayView
+            key={i}
+            dayIndex={i}
+            day={day}
+            onSelectDay={this.onSelectDay}
+          />
+        )}
+      </TransBox>
+
     </Fragment>
   }
 }

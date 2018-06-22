@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ReportView from './ReportView'
 import toWeekday from '../utils/toWeekday'
 import WeatherIcon from './WeatherIcon'
-import {Small} from '../views/Title'
+import {Small as SmallTitle, Middle as MiddleTitle} from '../views/Title'
 import Temperature from './Temperature'
 import Row from '../views/Row'
 import styled from 'styled-components'
@@ -18,13 +18,16 @@ const LocalWeatherReport = props => {
 
   return <ReportView title='Local Weather Report'>
     <Row>
-      <WeatherIcon name={day.weather.icon} />
+
+      <Fill>
+        <WeatherIcon name={day.weather.icon} />
+      </Fill>
 
 
 
       <Fill>
-        {toWeekday(day.datetime)}
-        <Small> {day.weather.description} </Small>
+        <MiddleTitle> {toWeekday(day.datetime)} </MiddleTitle>
+        <SmallTitle> {day.weather.description} </SmallTitle>
         <Temperature temperature={day.max_temp} />
       </Fill>
     </Row>

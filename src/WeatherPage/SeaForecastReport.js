@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ReportView from './ReportView'
 import styled from 'styled-components'
@@ -9,12 +9,22 @@ const EntryTable = styled.table`
 
 const Entry = ({label, value}) => {
   return <tr>
-    <td> {label} </td>
+    <EntryLabel> {label} </EntryLabel>
     <EntryValue > {value} </EntryValue >
   </tr>
 }
+Entry.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
+}
 
-const EntryValue = styled.td`
+const EntryLabel = styled.td`
+  color: #d7d7d7;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: bold;
+`
+const EntryValue = EntryLabel.extend`
   text-align: right;
 `
 

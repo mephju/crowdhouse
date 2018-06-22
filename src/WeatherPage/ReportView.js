@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from  'styled-components'
 import {Small as SmallTitle} from '../views/Title'
@@ -18,6 +18,11 @@ const ReportView = props => {
     <ReportTitle> {props.title} </ReportTitle>
     {props.children}
   </ReportWrapper>
+}
+
+ReportView.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default ReportView
